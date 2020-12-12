@@ -2,6 +2,7 @@ package com.kamilradzyminski.projekt.service.impl;
 
 import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.domain.enums.PropertyType;
+import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.service.PersonService;
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+
 
     final ArrayList<Person> personList;
 
@@ -39,7 +42,7 @@ public class PersonServiceImpl implements PersonService {
 
     // TODO Edytowanie starej osoby
     @Override
-    public Person update(int id, PersonRequest personRequest) {
+    public Optional<Person> update(int id, PersonEditRequest personRequest) {
         return null;
     }
 
@@ -52,6 +55,12 @@ public class PersonServiceImpl implements PersonService {
     // TODO Zwracanie statystyk
     @Override
     public StatisticsResponse getStatistics() {
+        return null;
+    }
+
+    // TODO Zwracanie osoby po id
+    @Override
+    public Optional<Person> getById(int id) {
         return null;
     }
 }
