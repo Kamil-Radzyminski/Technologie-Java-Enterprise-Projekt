@@ -1,6 +1,5 @@
 package com.kamilradzyminski.projekt.domain;
 
-import com.kamilradzyminski.projekt.domain.enums.CreditCardType;
 import com.kamilradzyminski.projekt.domain.enums.Gender;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +10,13 @@ public class Person {
     private String lastName;
     private String email;
     private Gender gender;
-    private CreditCardType creditCardType;
+    private String creditCardType;
     private String creditCardNumber;
 
     public Person() {
     }
 
-    public Person(int id, String firstName, String lastName, String email, Gender gender, CreditCardType creditCardType, String creditCardNumber) {
+    public Person(int id, String firstName, String lastName, String email, Gender gender, String creditCardType, String creditCardNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -67,11 +66,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public CreditCardType getCreditCardType() {
+    public String getCreditCardType() {
         return creditCardType;
     }
 
-    public void setCreditCardType(CreditCardType creditCardType) {
+    public void setCreditCardType(String creditCardType) {
         this.creditCardType = creditCardType;
     }
 

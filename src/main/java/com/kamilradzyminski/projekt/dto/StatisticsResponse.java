@@ -1,24 +1,22 @@
 package com.kamilradzyminski.projekt.dto;
 
-import com.kamilradzyminski.projekt.domain.enums.CreditCardType;
-
 public class StatisticsResponse {
-    CreditCardType creditCardType;
+    String creditCardType;
     int count;
 
     public StatisticsResponse() {
     }
 
-    public StatisticsResponse(CreditCardType creditCardType, int count) {
+    public StatisticsResponse(String creditCardType, int count) {
         this.creditCardType = creditCardType;
         this.count = count;
     }
 
-    public CreditCardType getCreditCardType() {
+    public String getCreditCardType() {
         return creditCardType;
     }
 
-    public void setCreditCardType(CreditCardType creditCardType) {
+    public void setCreditCardType(String creditCardType) {
         this.creditCardType = creditCardType;
     }
 

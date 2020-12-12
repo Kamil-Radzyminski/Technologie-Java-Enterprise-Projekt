@@ -1,6 +1,5 @@
 package com.kamilradzyminski.projekt.dto;
 
-import com.kamilradzyminski.projekt.domain.enums.CreditCardType;
 import com.kamilradzyminski.projekt.domain.enums.Gender;
 
 public class PersonResponse {
@@ -9,13 +8,13 @@ public class PersonResponse {
     private String lastName;
     private String email;
     private Gender gender;
-    private CreditCardType creditCardType;
+    private String creditCardType;
     private String creditCardNumber;
 
     public PersonResponse() {
     }
 
-    public PersonResponse(int id, String firstName, String lastName, String email, Gender gender, CreditCardType creditCardType, String creditCardNumber) {
+    public PersonResponse(int id, String firstName, String lastName, String email, Gender gender, String creditCardType, String creditCardNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,11 +64,11 @@ public class PersonResponse {
         this.gender = gender;
     }
 
-    public CreditCardType getCreditCardType() {
+    public String getCreditCardType() {
         return creditCardType;
     }
 
-    public void setCreditCardType(CreditCardType creditCardType) {
+    public void setCreditCardType(String creditCardType) {
         this.creditCardType = creditCardType;
     }
 
