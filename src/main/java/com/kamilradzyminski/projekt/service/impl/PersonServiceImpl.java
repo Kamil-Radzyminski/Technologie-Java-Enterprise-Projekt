@@ -61,7 +61,7 @@ public class PersonServiceImpl implements PersonService {
     // TODO Usuwanie osób
     @Override
     public void delete(int id) {
-
+        personList.stream().filter(person -> person.getId() == id).findFirst().ifPresent(personList::remove);
     }
 
     // TODO Zwracanie statystyk
