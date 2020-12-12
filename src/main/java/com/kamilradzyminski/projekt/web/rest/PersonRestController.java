@@ -1,6 +1,6 @@
 package com.kamilradzyminski.projekt.web.rest;
 
-import com.kamilradzyminski.projekt.dto.PersonResponse;
+import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,8 @@ public class PersonRestController {
     // TODO Wyświetlanie danej osoby w postaci JSON'a
     @CrossOrigin
     @GetMapping(value = "/api/persons/{id}")
-    public ResponseEntity<PersonResponse> getNoteById(@PathVariable String id){
-        return new ResponseEntity<>(new PersonResponse(), HttpStatus.OK);
+    public ResponseEntity<PersonEditRequest> getNoteById(@PathVariable String id){
+        return new ResponseEntity<>(new PersonEditRequest(), HttpStatus.OK);
     }
 
 }

@@ -1,0 +1,30 @@
+package com.kamilradzyminski.projekt.dto;
+
+import com.kamilradzyminski.projekt.domain.Person;
+import com.kamilradzyminski.projekt.domain.enums.Gender;
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class PersonEditRequest {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Gender gender;
+    private String creditCardType;
+    private String creditCardNumber;
+
+    public PersonEditRequest(Person person){
+        this.id = person.getId();
+        this.firstName = person.getFirstName();
+        this.lastName = person.getLastName();
+        this.email = person.getEmail();
+        this.gender = person.getGender();
+        this.creditCardNumber = person.getCreditCardNumber();
+        this.creditCardType = person.getCreditCardType();
+    }
+}
