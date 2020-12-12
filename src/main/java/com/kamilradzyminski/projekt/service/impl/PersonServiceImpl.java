@@ -39,7 +39,10 @@ public class PersonServiceImpl implements PersonService {
     // TODO Tworzenie nowej osoby
     @Override
     public Person create(PersonRequest personRequest) {
-        return null;
+        int index = personList.get(personList.size() - 1).getId() + 1;
+        Person newPerson = new Person(index, personRequest.getFirstName(), personRequest.getLastName(), personRequest.getEmail(), personRequest.getGender(), personRequest.getCreditCardType(), personRequest.getCreditCardNumber());
+        personList.add(newPerson);
+        return newPerson;
     }
 
     // TODO Edytowanie starej osoby
