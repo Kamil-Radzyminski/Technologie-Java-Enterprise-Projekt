@@ -48,7 +48,14 @@ public class PersonServiceImpl implements PersonService {
     // TODO Edytowanie starej osoby
     @Override
     public Optional<Person> update(int id, PersonEditRequest personRequest) {
-        return null;
+        return personList.stream().filter(person -> person.getId() == id).peek(person -> {
+            person.setFirstName(personRequest.getFirstName());
+            person.setLastName(personRequest.getLastName());
+            person.setEmail(personRequest.getEmail());
+            person.setCreditCardNumber(personRequest.getCreditCardNumber());
+            person.setCreditCardType(personRequest.getCreditCardType());
+            person.setGender(personRequest.getGender());
+        }).findFirst();
     }
 
     // TODO Usuwanie osób
