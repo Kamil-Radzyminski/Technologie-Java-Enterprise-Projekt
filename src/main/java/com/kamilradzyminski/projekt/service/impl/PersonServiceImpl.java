@@ -36,7 +36,7 @@ public class PersonServiceImpl implements PersonService {
         return null;
     }
 
-    // TODO Tworzenie nowej osoby
+    // Tworzenie nowej osoby
     @Override
     public Person create(PersonRequest personRequest) {
         int index = personList.get(personList.size() - 1).getId() + 1;
@@ -45,7 +45,7 @@ public class PersonServiceImpl implements PersonService {
         return newPerson;
     }
 
-    // TODO Edytowanie starej osoby
+    // Edytowanie starej osoby
     @Override
     public Optional<Person> update(int id, PersonEditRequest personRequest) {
         return personList.stream().filter(person -> person.getId() == id).peek(person -> {
@@ -58,7 +58,7 @@ public class PersonServiceImpl implements PersonService {
         }).findFirst();
     }
 
-    // TODO Usuwanie osób
+    // Usuwanie osób
     @Override
     public void delete(int id) {
         personList.stream().filter(person -> person.getId() == id).findFirst().ifPresent(personList::remove);
@@ -70,9 +70,9 @@ public class PersonServiceImpl implements PersonService {
         return null;
     }
 
-    // TODO Zwracanie osoby po id
+    // Zwracanie osoby po id
     @Override
     public Optional<Person> getById(int id) {
-        return null;
+        return personList.stream().filter(person -> person.getId() == id).findFirst();
     }
 }
