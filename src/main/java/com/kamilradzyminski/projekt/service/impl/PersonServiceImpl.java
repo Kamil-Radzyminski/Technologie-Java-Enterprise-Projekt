@@ -6,6 +6,7 @@ import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.service.PersonService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,17 +16,18 @@ import java.util.Optional;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-
+    final ApplicationContext context;
     final ArrayList<Person> personList;
 
-    public PersonServiceImpl() {
+    public PersonServiceImpl(ApplicationContext context) {
+        this.context = context;
         this.personList = new ArrayList<>();
     }
 
-    // TODO Zwracanie wszystkich osób
+    // Zwracanie wszystkich osób
     @Override
     public List<Person> getAll() {
-        return null;
+        return personList;
     }
 
     // TODO Szukanie według atrybutu
