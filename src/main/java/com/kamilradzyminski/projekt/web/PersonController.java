@@ -67,9 +67,10 @@ public class PersonController {
         return "redirect:/persons";
     }
 
-    //TODO Usuwanie osoby
-    @GetMapping("/persons/delete/{id}")
-    public String personDeleteUser(@PathVariable("id") int id) {
+    //Usuwanie osoby
+    @GetMapping("/persons/remove/{id}")
+    public String personRemoveUser(@PathVariable("id") int id) {
+        personService.delete(id);
         return "redirect:/persons";
     }
 
