@@ -6,11 +6,14 @@ import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.service.PersonService;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -22,6 +25,14 @@ public class PersonServiceImpl implements PersonService {
     public PersonServiceImpl(ApplicationContext context) {
         this.context = context;
         this.personList = new ArrayList<>();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void loadBeansAfterStartup() {
+        Map<String, Person> map = context.getBeansOfType(Person.class);
+        map.values().stream().skip(1).forEach(personList::add);
+
+        System.out.println(this.personList);
     }
 
     // Zwracanie wszystkich osób

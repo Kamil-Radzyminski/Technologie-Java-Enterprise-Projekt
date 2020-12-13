@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="1" class="com.kamilradzyminski.projekt.domain.Person">
+    <constructor-arg name="id" value="1" />
+    <constructor-arg name="firstName" value="Brett" />
+    <constructor-arg name="lastName" value="Hogbourne" />
+    <constructor-arg name="email" value="bhogbourne0@sakura.ne.jp" />
+    <constructor-arg name="gender" value="Female" />
+    <constructor-arg name="creditCardType" value="americanexpress" />
+    <constructor-arg name="creditCardNumber" value="374283959709510" />
+  </bean>
+  <bean id="2" class="com.kamilradzyminski.projekt.domain.Person">
+    <constructor-arg name="id" value="2" />
+    <constructor-arg name="firstName" value="Antonius" />
+    <constructor-arg name="lastName" value="Hiland" />
+    <constructor-arg name="email" value="ahiland1@amazon.co.jp" />
+    <constructor-arg name="gender" value="Male" />
+    <constructor-arg name="creditCardType" value="jcb" />
+    <constructor-arg name="creditCardNumber" value="3532717819771668" />
+  </bean>
+  <bean id="3" class="com.kamilradzyminski.projekt.domain.Person">
+    <constructor-arg name="id" value="3" />
+    <constructor-arg name="firstName" value="Ethelda" />
+    <constructor-arg name="lastName" value="De Bischof" />
+    <constructor-arg name="email" value="edebischof2@about.me" />
+    <constructor-arg name="gender" value="Female" />
+    <constructor-arg name="creditCardType" value="switch" />
+    <constructor-arg name="creditCardNumber" value="5641827599792769927" />
+  </bean>
+  <bean id="4" class="com.kamilradzyminski.projekt.domain.Person">
+    <constructor-arg name="id" value="4" />
+    <constructor-arg name="firstName" value="Hube" />
+    <constructor-arg name="lastName" value="Chanders" />
+    <constructor-arg name="email" value="hchanders3@github.io" />
+    <constructor-arg name="gender" value="Male" />
+    <constructor-arg name="creditCardType" value="jcb" />
+    <constructor-arg name="creditCardNumber" value="3533230619537387" />
+  </bean>
+  <bean id="5" class="com.kamilradzyminski.projekt.domain.Person">
+    <constructor-arg name="id" value="5" />
+    <constructor-arg name="firstName" value="Jerald" />
+    <constructor-arg name="lastName" value="Jansky" />
+    <constructor-arg name="email" value="jjansky4@histats.com" />
+    <constructor-arg name="gender" value="Male" />
+    <constructor-arg name="creditCardType" value="jcb" />
+    <constructor-arg name="creditCardNumber" value="3572276506050846" />
+  </bean>
+
+
+</beans>
+
