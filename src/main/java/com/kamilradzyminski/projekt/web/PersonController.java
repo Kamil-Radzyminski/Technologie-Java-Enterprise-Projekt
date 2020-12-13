@@ -1,5 +1,7 @@
 package com.kamilradzyminski.projekt.web;
 
+
+import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.SearchRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class PersonController {
@@ -31,7 +34,8 @@ public class PersonController {
     //TODO Wyświetlenie wszystkich osób
     @GetMapping("/persons")
     public String persons(Model model) {
-        model.addAttribute("personsList", Collections.emptyList());
+        List<Person> personList = personService.getAll();
+        model.addAttribute("personsList", personList);
         return "persons";
     }
 
