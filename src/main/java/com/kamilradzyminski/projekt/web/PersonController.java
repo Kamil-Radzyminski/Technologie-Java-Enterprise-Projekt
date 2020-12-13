@@ -25,13 +25,13 @@ public class PersonController {
         this.personService = personService;
     }
 
-    //TODO Strona główna
+    //Strona główna
     @GetMapping
     public String homepage() {
         return "index";
     }
 
-    //TODO Wyświetlenie wszystkich osób
+    //Wyświetlenie wszystkich osób
     @GetMapping("/persons")
     public String persons(Model model) {
         List<Person> personList = personService.getAll();
@@ -39,10 +39,11 @@ public class PersonController {
         return "persons";
     }
 
-    //TODO Formularz dodawania osób
+    //Formularz dodawania osób
     @GetMapping("/persons/new")
     public String personForm(Model model) {
-        model.addAttribute("person", new PersonRequest());
+        PersonRequest personRequest = new PersonRequest();
+        model.addAttribute("newPerson", personRequest);
         return "personForm";
     }
 
