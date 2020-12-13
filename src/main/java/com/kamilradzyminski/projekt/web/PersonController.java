@@ -54,9 +54,10 @@ public class PersonController {
         return "personForm";
     }
 
-    //TODO Obsługa dodania osoby z formularza
+    //Obsługa dodania osoby z formularza
     @PostMapping("/persons/new")
     public String personFormSubmit(@ModelAttribute PersonRequest person) {
+        personService.create(person);
         return "redirect:/persons";
     }
 
