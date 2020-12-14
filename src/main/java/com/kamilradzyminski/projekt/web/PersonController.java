@@ -1,6 +1,5 @@
 package com.kamilradzyminski.projekt.web;
 
-
 import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+
 
 @Controller
 public class PersonController {

@@ -1,14 +1,17 @@
 package com.kamilradzyminski.projekt.service.impl;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.domain.enums.PropertyType;
+import com.kamilradzyminski.projekt.dto.types.PropertyType;
 import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.service.PersonService;
+import com.kamilradzyminski.projekt.utitles.CsvToXmlParser;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
+import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,20 +22,29 @@ import java.util.Optional;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    final ApplicationContext context;
-    final ArrayList<Person> personList;
+    ArrayList<Person> personList;
+    final GenericApplicationContext context;
 
-    public PersonServiceImpl(ApplicationContext context) {
-        this.context = context;
+    public PersonServiceImpl(GenericApplicationContext context) {
         this.personList = new ArrayList<>();
+        this.context = context;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadBeansAfterStartup() {
-        Map<String, Person> map = context.getBeansOfType(Person.class);
-        map.values().stream().skip(1).forEach(personList::add);
+        loadBeans();
+    }
 
-        System.out.println(this.personList);
+    public void loadBeans(){
+        try {
+            XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(context);
+            xmlReader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_XSD);
+            xmlReader.loadBeanDefinitions(new ClassPathResource("beans.xml"));
+            Map<String, Person> map = context.getBeansOfType(Person.class);
+            map.values().stream().skip(1).forEach(person -> personList.add(person));
+        } catch (Exception e){
+            this.personList = CsvToXmlParser.loadList();
+        }
     }
 
     // Zwracanie wszystkich osób

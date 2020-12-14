@@ -12,7 +12,7 @@ public class PersonRequest {
     private String firstName;
     private String lastName;
     private String email;
-    private Gender gender;
+    private String gender;
     private String creditCardType;
     private String creditCardNumber;
 

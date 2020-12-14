@@ -4,7 +4,7 @@ import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.dto.PersonEditRequest;
-import com.kamilradzyminski.projekt.domain.enums.PropertyType;
+import com.kamilradzyminski.projekt.dto.types.PropertyType;
 
 import java.util.List;
 import java.util.Optional;

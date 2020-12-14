@@ -1,6 +1,6 @@
 package com.kamilradzyminski.projekt.dto;
 
-import com.kamilradzyminski.projekt.domain.enums.PropertyType;
+import com.kamilradzyminski.projekt.dto.types.PropertyType;
 import lombok.*;
 
 @Getter
