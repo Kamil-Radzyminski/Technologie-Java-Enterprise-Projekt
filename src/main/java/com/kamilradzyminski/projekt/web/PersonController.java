@@ -8,11 +8,13 @@ import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,16 +64,22 @@ public class PersonController {
         }
     }
 
-    //Obsługa dodania osoby z formularza
+    // Obsługa dodania osoby z formularza
     @PostMapping("/persons/new")
-    public String personFormSubmit(@ModelAttribute PersonRequest person) {
-        personService.create(person);
+    public String personFormSubmit(@Valid @ModelAttribute("newPerson") PersonRequest personRequest, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "personForm";
+        }
+        personService.create(personRequest);
         return "redirect:/persons";
     }
 
-    //Obsługa edycji osoby z formularza
+    // Obsługa edycji osoby z formularza
     @PostMapping("/persons/edit/{id}")
-    public String personFormEditSubmit(@PathVariable("id") int id, @ModelAttribute PersonEditRequest person) {
+    public String personFormEditSubmit(@PathVariable("id") int id, @Valid @ModelAttribute("oldPerson") PersonEditRequest person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "personFormEdit";
+        }
         personService.update(id, person);
         return "redirect:/persons";
     }

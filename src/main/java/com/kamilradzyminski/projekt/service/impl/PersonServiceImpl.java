@@ -14,6 +14,7 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -86,10 +87,10 @@ public class PersonServiceImpl implements PersonService {
     // Tworzenie nowej osoby
     @Override
     public Person create(PersonRequest personRequest) {
-        int index = personList.get(personList.size() - 1).getId() + 1;
-        Person newPerson = new Person(index, personRequest.getFirstName(), personRequest.getLastName(), personRequest.getEmail(), personRequest.getGender(), personRequest.getCreditCardType(), personRequest.getCreditCardNumber());
-        personList.add(newPerson);
-        return newPerson;
+        int index = personList.isEmpty() ? 1 : (personList.stream().mapToInt(Person::getId).max().getAsInt()) + 1;
+        Person newUser = new Person(index, personRequest.getFirstName(), personRequest.getLastName(), personRequest.getEmail(), personRequest.getGender(), personRequest.getCreditCardType(), personRequest.getCreditCardNumber());
+        personList.add(newUser);
+        return newUser;
     }
 
     // Edytowanie starej osoby

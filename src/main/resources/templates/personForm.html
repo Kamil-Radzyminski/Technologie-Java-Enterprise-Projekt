@@ -26,7 +26,7 @@
 </nav>
 
 <main role="main" class="flex-fill container mt-5">
-    <div class="bg-light p-3 border">
+    <div class="bg-light p-3 border mb-5">
         <div class="mb-3">
             <h1>Add new person</h1>
         </div>
@@ -34,17 +34,20 @@
         <form th:action="@{/persons/new}" th:object="${newPerson}" method="post">
             <div class="form-group">
                 <label for="firstName">First name</label>
-                <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                <input type="text" class="form-control" id="firstName" th:field="*{firstName}" th:errorClass="is-invalid">
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">First Name error</p>
             </div>
 
             <div class="form-group">
                 <label for="lastName">Last name</label>
-                <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}" th:errorClass="is-invalid">
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Last Name error</p>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" th:field="*{email}">
+                <input type="text" class="form-control" id="email" th:field="*{email}" th:errorClass="is-invalid">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error</span>
             </div>
 
             <fieldset class="form-group">
@@ -61,16 +64,19 @@
                         Female
                     </label>
                 </div>
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" th:errorClass="is-invalid" class="text-danger">Gender error</span>
             </fieldset>
 
             <div class="form-group">
                 <label for="creditCardType">Credit card type</label>
-                <input type="text" class="form-control" id="creditCardType" th:field="*{creditCardType}">
+                <input type="text" class="form-control" id="creditCardType" th:field="*{creditCardType}" th:errorClass="is-invalid">
+                <span th:if="${#fields.hasErrors('creditCardType')}" th:errors="*{creditCardType}" class="text-danger">creditCardType error</span>
             </div>
 
             <div class="form-group">
                 <label for="creditCardNumber">Credit card number</label>
-                <input type="text" class="form-control" id="creditCardNumber" th:field="*{creditCardNumber}">
+                <input type="text" class="form-control" id="creditCardNumber" th:field="*{creditCardNumber}" th:errorClass="is-invalid">
+                <span th:if="${#fields.hasErrors('creditCardNumber')}" th:errors="*{creditCardNumber}" th:errorClass="is-invalid" class="text-danger">creditCardNumber error</span>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>

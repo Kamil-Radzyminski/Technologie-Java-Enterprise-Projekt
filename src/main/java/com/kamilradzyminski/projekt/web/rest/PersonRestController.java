@@ -1,7 +1,6 @@
 package com.kamilradzyminski.projekt.web.rest;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
