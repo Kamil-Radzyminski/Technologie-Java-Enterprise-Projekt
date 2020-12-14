@@ -1,7 +1,6 @@
 package com.kamilradzyminski.projekt.dto;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.domain.enums.Gender;
 import lombok.*;
 
 @Getter

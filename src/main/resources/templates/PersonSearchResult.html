@@ -26,31 +26,39 @@
 </nav>
 
 <main role="main" class="flex-fill container mt-5">
-    <div class="bg-light p-3 border">
-        <div class="mb-3">
-            <h1>Search</h1>
-        </div>
-
-        <form th:action="@{/persons/search}" th:object="${search}" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" aria-label="Value input" placeholder="Search this site" th:field="*{value}" required>
-                <div class="input-group-append">
-                    <select class="form-select border" aria-label="Property select" th:field="*{propertyType}">
-                        <option value="id">ID</option>
-                        <option value="firstName" selected>First name</option>
-                        <option value="lastName">Last name</option>
-                        <option value="email">Email</option>
-                        <option value="gender">Gender</option>
-                        <option value="creditCardType">Credit card type</option>
-                        <option value="creditCardNumber">Credit card number</option>
-                    </select>
-                </div>
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </div>
-        </form>
+    <div class="mb-3">
+        <h1>Search results</h1>
     </div>
+
+    <table class="table bg-light border">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Credit card type</th>
+            <th scope="col">Credit card number</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person, loop: ${personsList}">
+            <th scope="row" th:text="${person.getId()}"></th>
+            <td th:text="${person.getFirstName()}"></td>
+            <td th:text="${person.getLastName()}"></td>
+            <td th:text="${person.getEmail()}"></td>
+            <td th:text="${person.getGender()}"></td>
+            <td th:text="${person.getCreditCardType()}"></td>
+            <td th:text="${person.getCreditCardNumber()}"></td>
+            <td>
+                <a th:href="@{|/persons/edit/${person.id}|}">Edit</a>
+                <a th:href="@{|/persons/remove/${person.id}|}">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 <footer class="footer">

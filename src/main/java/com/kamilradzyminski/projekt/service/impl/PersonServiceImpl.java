@@ -14,10 +14,8 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -53,10 +51,36 @@ public class PersonServiceImpl implements PersonService {
         return personList;
     }
 
-    // TODO Szukanie według atrybutu
+    // Szukanie osób według atrybutu
     @Override
     public List<Person> getByProperty(PropertyType propertyType, String query) {
-        return null;
+        List<Person> list;
+        switch (propertyType) {
+            case id:
+                list = personList.stream().filter(p -> p.getId() == Integer.parseInt(query)).collect(Collectors.toList());
+                break;
+            case email:
+                list = personList.stream().filter(p -> p.getEmail().startsWith(query)).collect(Collectors.toList());
+                break;
+            case gender:
+                list = personList.stream().filter(p -> p.getGender().startsWith(query)).collect(Collectors.toList());
+                break;
+            case lastName:
+                list = personList.stream().filter(p -> p.getLastName().startsWith(query)).collect(Collectors.toList());
+                break;
+            case firstName:
+                list = personList.stream().filter(p -> p.getFirstName().startsWith(query)).collect(Collectors.toList());
+                break;
+            case creditCardType:
+                list = personList.stream().filter(p -> p.getCreditCardType().startsWith(query)).collect(Collectors.toList());
+                break;
+            case creditCardNumber:
+                list = personList.stream().filter(p -> p.getCreditCardNumber().startsWith(query)).collect(Collectors.toList());
+                break;
+            default:
+                return Collections.emptyList();
+        }
+        return list;
     }
 
     // Tworzenie nowej osoby

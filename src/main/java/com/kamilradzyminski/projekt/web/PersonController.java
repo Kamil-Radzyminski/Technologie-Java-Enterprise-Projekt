@@ -83,11 +83,19 @@ public class PersonController {
         return "redirect:/persons";
     }
 
-    // TODO Wyszukiwarka po danym polu
+    //Wyszukiwarka osoby po danym polu
     @GetMapping("/persons/search")
     public String searchPerson(Model model) {
         model.addAttribute("search", new SearchRequest());
         return "personSearch";
+    }
+
+    // Obsługa wyszukiwarki
+    @PostMapping("/persons/search")
+    public String searchPersonResult(Model model, @ModelAttribute SearchRequest searchRequest) {
+        List<Person> personList = personService.getByProperty(searchRequest.getPropertyType(), searchRequest.getValue());
+        model.addAttribute("personsList", personList);
+        return "personSearchResult";
     }
 
     // TODO Statystyki osób
