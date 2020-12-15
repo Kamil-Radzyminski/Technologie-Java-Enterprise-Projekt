@@ -18,12 +18,20 @@
             <li class="nav-item">
                 <a class="nav-link text-light" th:href="@{/persons/search}">Search</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-light dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Statistics</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" th:href="@{/persons/statistics}">Credit Card Type</a>
+                    <a class="dropdown-item" th:href="@{/persons/genderStatistics}">Gender</a>
+                </div>
+            </li>
             <li class="nav-item">
-                <a class="nav-link text-light" th:href="@{/persons/statistics}">Statistics</a>
+                <a class="nav-link text-light" th:href="@{/settings}">Settings</a>
             </li>
         </ul>
     </div>
 </nav>
+
 
 <main role="main" class="flex-fill container mt-5">
     <div class="bg-light p-3 border mb-5">
@@ -86,9 +94,10 @@
 
 <footer class="footer">
     <div class="container-fluid bg-dark text-center p-2">
-        <span class="text-light">Kamil Radzymiński 2020</span>
+        <span class="text-light">Kamil Radzyminski 2020</span>
     </div>
 </footer>
 </body>
-<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>

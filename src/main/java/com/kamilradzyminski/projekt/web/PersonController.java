@@ -106,10 +106,15 @@ public class PersonController {
         return "personSearchResult";
     }
 
-    // TODO Statystyki osób
+    // Statystyki osób
     @GetMapping("/persons/statistics")
-    public String personStatistics(Model model) {
-        model.addAttribute("statistics", new StatisticsResponse());
+    public String personStatistics() {
         return "personStatistics";
+    }
+
+    // Statystyki osób - płeć
+    @GetMapping("/persons/genderStatistics")
+    public String personGenderStatistics() {
+        return "personGenderStatistics";
     }
 }

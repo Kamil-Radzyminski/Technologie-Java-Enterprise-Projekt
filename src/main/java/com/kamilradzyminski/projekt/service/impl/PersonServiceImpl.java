@@ -5,6 +5,7 @@ import com.kamilradzyminski.projekt.dto.types.PropertyType;
 import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.PersonRequest;
 import com.kamilradzyminski.projekt.dto.StatisticsResponse;
+import com.kamilradzyminski.projekt.dto.types.StatisticsType;
 import com.kamilradzyminski.projekt.service.PersonService;
 import com.kamilradzyminski.projekt.utitles.CsvToXmlParser;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -112,10 +113,33 @@ public class PersonServiceImpl implements PersonService {
         personList.stream().filter(person -> person.getId() == id).findFirst().ifPresent(personList::remove);
     }
 
-    // TODO Zwracanie statystyk
+
+    // Zwracanie statystyk
     @Override
-    public StatisticsResponse getStatistics() {
-        return null;
+    public List<StatisticsResponse> getStatistics(StatisticsType statisticsType) {
+        List<String> statisticsList;
+        switch (statisticsType){
+            case gender:
+                statisticsList = personList.stream().map(Person::getGender).collect(Collectors.toList());
+                break;
+            case creditCard:
+                statisticsList = personList.stream().map(Person::getCreditCardType).collect(Collectors.toList());
+                break;
+            default:
+                statisticsList = Collections.emptyList();
+        }
+
+        Set<String> uniqueStatsticsList = new HashSet<>(statisticsList);
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String key : uniqueStatsticsList) {
+            map.put(key, Collections.frequency(statisticsList, key));
+        }
+
+        ArrayList<StatisticsResponse> statsList = new ArrayList<>();
+        map.forEach((key, value) -> statsList.add(new StatisticsResponse(key, value)));
+
+        return statsList;
     }
 
     // Zwracanie osoby po id

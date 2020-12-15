@@ -18,6 +18,7 @@
             <li class="nav-item">
                 <a class="nav-link text-light" th:href="@{/persons/search}">Search</a>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link text-light dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Statistics</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -25,6 +26,7 @@
                     <a class="dropdown-item" th:href="@{/persons/genderStatistics}">Gender</a>
                 </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link text-light" th:href="@{/settings}">Settings</a>
             </li>
@@ -36,29 +38,13 @@
 <main role="main" class="flex-fill container mt-5">
     <div class="bg-light p-3 border">
         <div class="mb-3">
-            <h1>Search</h1>
-        </div>
-
-        <form th:action="@{/persons/search}" th:object="${search}" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" aria-label="Value input" placeholder="Search this site" th:field="*{value}" required>
-                <div class="input-group-append">
-                    <select class="form-select border" aria-label="Property select" th:field="*{propertyType}">
-                        <option value="id">ID</option>
-                        <option value="firstName" selected>First name</option>
-                        <option value="lastName">Last name</option>
-                        <option value="email">Email</option>
-                        <option value="gender">Gender</option>
-                        <option value="creditCardType">Credit card type</option>
-                        <option value="creditCardNumber">Credit card number</option>
-                    </select>
-                </div>
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
+            <h1>Statistics</h1>
+            <div>
+                <canvas id="myChart"></canvas>
             </div>
-        </form>
+        </div>
     </div>
+    <a th:href="@{/api/genderStatistics}" id="apiUrl" class="d-none">apiUrl</a>
 </main>
 
 <footer class="footer">
@@ -67,6 +53,55 @@
     </div>
 </footer>
 </body>
+<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    ctx.canvas.height = "500";
+    const url = document.getElementById('apiUrl').getAttribute("href");
+
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Person credit card statistics',
+                data: [],
+                backgroundColor: [
+
+                ]
+            }]
+        },
+        options: {
+            "responsive": true,
+            "maintainAspectRatio": false
+        }
+    });
+
+    const getRandomColor = () => {
+        return '#'+Math.floor(Math.random()*16777215).toString(16)
+    };
+
+    fetch(url, myChart)
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+            let labels = [];
+            let data = [];
+            let colors = [];
+
+            myJson.map( value => {
+                labels.push(value.name);
+                data.push(value.count);
+                colors.push(getRandomColor());
+            })
+
+            myChart.data.labels = labels;
+            myChart.data.datasets[0].data = data;
+            myChart.data.datasets[0].backgroundColor = colors;
+            myChart.update()
+        });
+</script>

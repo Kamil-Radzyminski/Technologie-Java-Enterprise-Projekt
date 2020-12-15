@@ -36,25 +36,28 @@
 <main role="main" class="flex-fill container mt-5">
     <div class="bg-light p-3 border">
         <div class="mb-3">
-            <h1>Search</h1>
+            <h1>Settings</h1>
         </div>
 
-        <form th:action="@{/persons/search}" th:object="${search}" method="post">
-            <div class="input-group">
-                <input type="text" class="form-control" aria-label="Value input" placeholder="Search this site" th:field="*{value}" required>
-                <div class="input-group-append">
-                    <select class="form-select border" aria-label="Property select" th:field="*{propertyType}">
-                        <option value="id">ID</option>
-                        <option value="firstName" selected>First name</option>
-                        <option value="lastName">Last name</option>
-                        <option value="email">Email</option>
-                        <option value="gender">Gender</option>
-                        <option value="creditCardType">Credit card type</option>
-                        <option value="creditCardNumber">Credit card number</option>
-                    </select>
+        <form th:action="@{/settings/sendCsv}" method="post" enctype="multipart/form-data">
+            <h6>Import settings</h6>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" name="file" class="custom-file-input bg-primary" id="file" accept=".csv" required>
+                    <label class="custom-file-label" for="file">Choose file</label>
                 </div>
                 <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </form>
+
+        <form th:action="@{/settings/downloadCsv}" th:object="${exportRequest}" method="post">
+            <h6>Export settings</h6>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Value input" placeholder="Filename .csv" th:field="*{filename}" required>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Download</button>
                 </div>
             </div>
         </form>

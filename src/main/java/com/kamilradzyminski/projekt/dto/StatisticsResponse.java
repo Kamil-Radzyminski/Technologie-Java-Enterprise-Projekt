@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class StatisticsResponse {
-    String creditCardType;
+    String name;
     int count;
 
 }
