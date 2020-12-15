@@ -14,6 +14,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.*;
@@ -146,5 +147,17 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Optional<Person> getById(int id) {
         return personList.stream().filter(person -> person.getId() == id).findFirst();
+    }
+
+    // Importowanie osób z pliku .csv
+    @Override
+    public void importCsv(MultipartFile file) {
+        this.personList = CsvToXmlParser.loadList(file);
+    }
+
+    // Eksportowanie osób do pliku .csv
+    @Override
+    public void exportCsv(String path) {
+        CsvToXmlParser.exportList(personList, path);
     }
 }

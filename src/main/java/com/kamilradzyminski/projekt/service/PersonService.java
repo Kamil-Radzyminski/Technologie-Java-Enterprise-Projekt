@@ -6,6 +6,7 @@ import com.kamilradzyminski.projekt.dto.StatisticsResponse;
 import com.kamilradzyminski.projekt.dto.PersonEditRequest;
 import com.kamilradzyminski.projekt.dto.types.PropertyType;
 import com.kamilradzyminski.projekt.dto.types.StatisticsType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,4 +25,8 @@ public interface PersonService {
     Optional<Person> getById(int id);
 
     List<StatisticsResponse> getStatistics(StatisticsType statisticsType);
+
+    void importCsv(MultipartFile file);
+
+    void exportCsv(String path);
 }

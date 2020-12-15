@@ -1,20 +1,20 @@
 package com.kamilradzyminski.projekt.web;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.PersonEditRequest;
-import com.kamilradzyminski.projekt.dto.PersonRequest;
-import com.kamilradzyminski.projekt.dto.SearchRequest;
-import com.kamilradzyminski.projekt.dto.StatisticsResponse;
+import com.kamilradzyminski.projekt.dto.*;
 import com.kamilradzyminski.projekt.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,5 +116,41 @@ public class PersonController {
     @GetMapping("/persons/genderStatistics")
     public String personGenderStatistics() {
         return "personGenderStatistics";
+    }
+
+    // Ustawienia
+    @GetMapping("/settings")
+    public String settings(Model model) {
+        ExportRequest exportRequest = new ExportRequest();
+        model.addAttribute("exportRequest", exportRequest);
+        return "settings";
+    }
+
+    // Importowanie osób z pliku .csv
+    @PostMapping("/settings/sendCsv")
+    public String settingsSendCsv(@RequestParam("file") MultipartFile file) {
+        personService.importCsv(file);
+        return "redirect:/persons";
+    }
+
+    // Exportowanie osób do pliku .csv
+    @PostMapping("/settings/downloadCsv")
+    public void settingsDownloadCsv(@ModelAttribute ExportRequest exportRequest, HttpServletResponse response) {
+        String path = "src/main/resources/PersonOne_1.csv";
+        personService.exportCsv(path);
+
+        Path file = Paths.get(path);
+        if (Files.exists(file)) {
+            response.setContentType("application/fileCsv");
+            response.addHeader("Content-Disposition", "attachment; filename=" + exportRequest.getFilename() + ".csv");
+            try {
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            } catch (IOException e) {
+                System.out.println("Error - " + e.getMessage());
+            }
+        } else {
+            System.out.println("File not found");
+        }
     }
 }
