@@ -14,9 +14,6 @@
     <name>projekt</name>
     <description>Osoby i ich karty kredytowe</description>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
