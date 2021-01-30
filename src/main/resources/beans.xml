@@ -1794,13 +1794,4 @@
 		<constructor-arg name="creditCardType" value="diners-club-enroute"/>
 		<constructor-arg name="creditCardNumber" value="201870992816754"/>
 	</bean>
-	<bean id="200" class="com.kamilradzyminski.projekt.domain.Person">
-		<constructor-arg name="id" value="200"/>
-		<constructor-arg name="firstName" value="Denys"/>
-		<constructor-arg name="lastName" value="Reville"/>
-		<constructor-arg name="email" value="dreville5j@slashdot.org"/>
-		<constructor-arg name="gender" value="Female"/>
-		<constructor-arg name="creditCardType" value="visa-electron"/>
-		<constructor-arg name="creditCardNumber" value="4917250102665499"/>
-	</bean>
 </beans>

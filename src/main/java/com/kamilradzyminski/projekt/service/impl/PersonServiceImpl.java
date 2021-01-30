@@ -44,7 +44,7 @@ public class PersonServiceImpl implements PersonService {
             Map<String, Person> map = context.getBeansOfType(Person.class);
             map.values().stream().skip(1).forEach(person -> personList.add(person));
         } catch (Exception e){
-            this.personList = CsvToXmlParser.loadList();
+            /*this.personList = CsvToXmlParser.loadList();*/
         }
     }
 
