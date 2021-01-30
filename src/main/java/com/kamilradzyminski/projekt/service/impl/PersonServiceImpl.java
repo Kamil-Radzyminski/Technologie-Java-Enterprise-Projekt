@@ -1,13 +1,7 @@
 package com.kamilradzyminski.projekt.service.impl;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.types.PropertyType;
-import com.kamilradzyminski.projekt.dto.PersonEditRequest;
-import com.kamilradzyminski.projekt.dto.PersonRequest;
-import com.kamilradzyminski.projekt.dto.StatisticsResponse;
-import com.kamilradzyminski.projekt.dto.types.StatisticsType;
 import com.kamilradzyminski.projekt.service.PersonService;
-import com.kamilradzyminski.projekt.utitles.CsvToXmlParser;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -22,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-
+/*
     ArrayList<Person> personList;
     final GenericApplicationContext context;
 
@@ -44,7 +38,7 @@ public class PersonServiceImpl implements PersonService {
             Map<String, Person> map = context.getBeansOfType(Person.class);
             map.values().stream().skip(1).forEach(person -> personList.add(person));
         } catch (Exception e){
-            /*this.personList = CsvToXmlParser.loadList();*/
+            *//*this.personList = CsvToXmlParser.loadList();*//*
         }
     }
 
@@ -159,5 +153,5 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void exportCsv(String path) {
         CsvToXmlParser.exportList(personList, path);
-    }
+    }*/
 }

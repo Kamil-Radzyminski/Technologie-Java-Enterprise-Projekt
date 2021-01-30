@@ -57,8 +57,8 @@ public class App {
     @Override
     public String toString() {
         return id +
-                "," + name +
-                "," + domain;
+                "," + appName +
+                "," + domainName;
     }
 }
 

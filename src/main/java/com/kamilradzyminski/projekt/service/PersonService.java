@@ -1,18 +1,13 @@
 package com.kamilradzyminski.projekt.service;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.PersonRequest;
-import com.kamilradzyminski.projekt.dto.StatisticsResponse;
-import com.kamilradzyminski.projekt.dto.PersonEditRequest;
-import com.kamilradzyminski.projekt.dto.types.PropertyType;
-import com.kamilradzyminski.projekt.dto.types.StatisticsType;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PersonService {
-    List<Person> getAll();
+/*    List<Person> getAll();
 
     List<Person> getByProperty(PropertyType propertyType, String query);
 
@@ -28,5 +23,5 @@ public interface PersonService {
 
     void importCsv(MultipartFile file);
 
-    void exportCsv(String path);
+    void exportCsv(String path);*/
 }

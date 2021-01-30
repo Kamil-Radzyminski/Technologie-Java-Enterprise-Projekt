@@ -34,6 +34,7 @@ public class PersonController {
         return "index";
     }
 
+/*
     //Wyświetlenie wszystkich osób
     @GetMapping("/persons")
     public String persons(Model model) {
@@ -105,6 +106,7 @@ public class PersonController {
         model.addAttribute("personsList", personList);
         return "personSearchResult";
     }
+*/
 
     // Statystyki osób
     @GetMapping("/persons/statistics")
@@ -118,7 +120,7 @@ public class PersonController {
         return "personGenderStatistics";
     }
 
-    // Ustawienia
+/*    // Ustawienia
     @GetMapping("/settings")
     public String settings(Model model) {
         ExportRequest exportRequest = new ExportRequest();
@@ -152,5 +154,5 @@ public class PersonController {
         } else {
             System.out.println("File not found");
         }
-    }
+    }*/
 }

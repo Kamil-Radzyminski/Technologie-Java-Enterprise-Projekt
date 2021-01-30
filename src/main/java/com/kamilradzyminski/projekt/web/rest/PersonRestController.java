@@ -1,8 +1,6 @@
 package com.kamilradzyminski.projekt.web.rest;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.StatisticsResponse;
-import com.kamilradzyminski.projekt.dto.types.StatisticsType;
 import com.kamilradzyminski.projekt.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 public class PersonRestController {
-
+/*
     final PersonService personService;
 
     public PersonRestController(PersonService personService) {
@@ -44,6 +42,6 @@ public class PersonRestController {
     public ResponseEntity<List<StatisticsResponse>> getGenderStatistics() {
         List<StatisticsResponse> statistics = personService.getStatistics(StatisticsType.gender);
         return new ResponseEntity<>(statistics, HttpStatus.OK);
-    }
+    }*/
 
 }

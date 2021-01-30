@@ -1,6 +1,5 @@
 package com.kamilradzyminski.projekt;
 
-import com.kamilradzyminski.projekt.utitles.CsvToXmlParser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +11,6 @@ import java.util.Locale;
 
 public class ProjektApplication {
     public static void main(String[] args) {
-        CsvToXmlParser.parserXml();
         SpringApplication.run(ProjektApplication.class, args);
     }
 
