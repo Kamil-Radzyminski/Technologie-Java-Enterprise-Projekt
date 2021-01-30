@@ -56,8 +56,8 @@ public class Person {
 //    @Size(min = 1, max = 32, message = "password is invalid")
     @CsvBindByName(column = "password")
     @NotNull
-//    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
-//            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
+            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
