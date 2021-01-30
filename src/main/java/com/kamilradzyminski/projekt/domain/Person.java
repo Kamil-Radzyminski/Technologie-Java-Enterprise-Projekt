@@ -59,7 +59,6 @@ public class Person {
 //    @NotNull
 //    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
 //            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
-    @ValidPassword
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
