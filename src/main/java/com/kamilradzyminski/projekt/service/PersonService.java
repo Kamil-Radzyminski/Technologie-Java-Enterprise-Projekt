@@ -1,27 +1,12 @@
 package com.kamilradzyminski.projekt.service;
 
 import com.kamilradzyminski.projekt.domain.Person;
-import org.springframework.web.multipart.MultipartFile;
+import com.kamilradzyminski.projekt.dto.PersonRegister;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
-import java.util.Optional;
 
-public interface PersonService {
-/*    List<Person> getAll();
+public interface PersonService extends UserDetailsService {
+    Person save(PersonRegister PersonRegister);
 
-    List<Person> getByProperty(PropertyType propertyType, String query);
-
-    Person create(PersonRequest personRequest);
-
-    Optional<Person> update(int id, PersonEditRequest personRequest);
-
-    void delete(int id);
-
-    Optional<Person> getById(int id);
-
-    List<StatisticsResponse> getStatistics(StatisticsType statisticsType);
-
-    void importCsv(MultipartFile file);
-
-    void exportCsv(String path);*/
+    Person saveAdmin(PersonRegister PersonRegister);
 }

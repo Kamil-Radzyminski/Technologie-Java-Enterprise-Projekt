@@ -22,17 +22,17 @@ public class Person {
     @Id
     @CsvBindByName(column = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Size(min = 4, max = 32, message = "First name is invalid")
-    @Pattern(regexp = "^[A-Za-z]*$", message = "First name is invalid")
+//    @Size(min = 1, max = 32, message = "First name is invalid")
+//    @Pattern(regexp = "^[A-Za-z]*$", message = "First name is invalid")
     @CsvBindByName(column = "first_name")
     @NotNull
     @Column(name = "first_name")
     private String firstName;
 
-    @Size(min = 4, max = 32, message = "Last name is invalid")
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Last name is invalid")
+//    @Size(min = 1, max = 32, message = "Last name is invalid")
+//    @Pattern(regexp = "^[A-Za-z]*$", message = "Last name is invalid")
     @CsvBindByName(column = "last_name")
     @NotNull
     @Column(name = "last_name")
@@ -42,22 +42,22 @@ public class Person {
     @CsvBindByName(column = "email")
     private String email;
 
-    @Size(min = 4, max = 32, message = "First name is invalid")
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Country is invalid")
+//    @Size(min = 1, max = 32, message = "Country is invalid")
+//    @Pattern(regexp = "^[A-Za-z]*$", message = "Country is invalid")
     @CsvBindByName(column = "country")
     @NotNull
     private String country;
 
-    @Size(min = 4, max = 32, message = "First name is invalid")
+    @Size(min = 1, max = 32, message = "First name is invalid")
     @CsvBindByName(column = "username")
     @NotNull
     private String username;
 
-    @Size(min = 4, max = 32, message = "First name is invalid")
+//    @Size(min = 1, max = 32, message = "password is invalid")
     @CsvBindByName(column = "password")
     @NotNull
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
-            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
+//    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
+//            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

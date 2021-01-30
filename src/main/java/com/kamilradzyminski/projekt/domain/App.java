@@ -24,7 +24,7 @@ public class App {
     @Id
     @CsvBindByName(column = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Size(min = 4, max = 32, message = "First name is invalid")
     @Pattern(regexp = "^[A-Za-z]*$", message = "First name is invalid")

@@ -17,8 +17,8 @@ public class PersonRegister {
     private String country;
     private String username;
     @NotNull
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
-            "w tym conajmniej jedna litera mała oraz duża i jedna cyfra ")
+//    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
+//            "w tym conajmniej jedna litera mała oraz duża i jedna cyfra ")
     private String password;
 
     public PersonRegister(String firstName, String lastName, String email, String country, String password, String username) {
