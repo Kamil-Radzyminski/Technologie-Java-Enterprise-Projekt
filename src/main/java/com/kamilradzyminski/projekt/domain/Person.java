@@ -1,6 +1,7 @@
 package com.kamilradzyminski.projekt.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.kamilradzyminski.projekt.validation.ValidPassword;
 import com.opencsv.bean.CsvBindByName;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -54,10 +55,11 @@ public class Person {
     private String username;
 
 //    @Size(min = 1, max = 32, message = "password is invalid")
-    @CsvBindByName(column = "password")
-    @NotNull
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
-            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
+//    @CsvBindByName(column = "password")
+//    @NotNull
+//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
+//            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
+    @ValidPassword
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
