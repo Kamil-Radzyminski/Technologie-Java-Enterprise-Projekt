@@ -5,6 +5,7 @@ import com.kamilradzyminski.projekt.domain.Role;
 import com.kamilradzyminski.projekt.dto.PersonRegister;
 import com.kamilradzyminski.projekt.repo.PersonRepo;
 import com.kamilradzyminski.projekt.service.PersonService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -21,7 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
+@Getter
 @Service
 public class PersonServiceImpl implements PersonService {
 

@@ -1,5 +1,6 @@
 package com.kamilradzyminski.projekt.dto;
 
+import com.kamilradzyminski.projekt.validation.ValidEmail;
 import com.kamilradzyminski.projekt.validation.ValidPassword;
 import com.sun.istack.NotNull;
 import lombok.Getter;
@@ -14,6 +15,8 @@ import javax.validation.constraints.Pattern;
 public class PersonRegister {
     private String firstName;
     private String lastName;
+    @ValidEmail
+    @Pattern(regexp = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", message = "Email is invalid")
     private String email;
     private String country;
     private String username;
