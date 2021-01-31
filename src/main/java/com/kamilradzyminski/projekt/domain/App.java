@@ -26,14 +26,10 @@ public class App {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 4, max = 32, message = "First name is invalid")
-    @Pattern(regexp = "^[A-Za-z]*$", message = "First name is invalid")
     @CsvBindByName(column = "app_name")
     @NotNull
     private String appName;
 
-    @Size(min = 4, max = 32, message = "Last name is invalid")
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Last name is invalid")
     @CsvBindByName(column = "domain_name")
     @NotNull
     private String domainName;

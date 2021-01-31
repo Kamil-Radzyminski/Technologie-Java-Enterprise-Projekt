@@ -5,15 +5,12 @@ import com.kamilradzyminski.projekt.dto.*;
 import com.kamilradzyminski.projekt.exceptions.NotFoundException;
 import com.kamilradzyminski.projekt.repo.AppRepo;
 import com.kamilradzyminski.projekt.repo.PersonRepo;
-import com.kamilradzyminski.projekt.service.PersonService;
 import com.kamilradzyminski.projekt.service.impl.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.File;

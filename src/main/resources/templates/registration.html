@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link th:rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="d-flex flex-column sticky-footer-wrapper min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand text-light" th:href="@{/}">Login</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-light" th:href="@{/guest/applications}">Applications list</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main role="main" class="flex-fill container mt-5">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <!-- success message -->
+      <div th:if="${param.success}">
+        <div class="alert alert-info">Registered</div>
+      </div>
+
+      <h1>Registration</h1>
+
+      <form th:action="@{/registration}" method="post" th:object="${person}">
+        <div class="form-group">
+          <label class="control-label" for="firstName"> First name </label>
+          <input id="firstName" class="form-control" th:field="*{firstName}"
+                 required autofocus="autofocus"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="lastName"> Last name </label> <input
+                id="lastName" class="form-control" th:field="*{lastName}"
+                required autofocus="autofocus"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="email"> Email </label> <input
+                id="email" class="form-control" th:field="*{email}" required
+                autofocus="autofocus"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="country">Country</label> <input
+                id="country" class="form-control" th:field="*{country}"
+                required autofocus="autofocus"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="username">Username</label> <input
+                id="username" class="form-control" th:field="*{username}"
+                required autofocus="autofocus"/>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password"> Password </label> <input
+                id="password" class="form-control" type="password"
+                th:field="*{password}" required autofocus="autofocus"/>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Register</button>
+          <span>You have an account? <a href="/" th:href="@{/login}">Log In</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+<footer class="footer">
+  <div class="container-fluid bg-dark text-center p-2">
+    <span class="text-light">Kamil Radzymiński 2021</span>
+  </div>
+</footer>
+</body>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
