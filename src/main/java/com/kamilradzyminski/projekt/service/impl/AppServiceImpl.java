@@ -5,10 +5,12 @@ import com.kamilradzyminski.projekt.dto.Application;
 import com.kamilradzyminski.projekt.repo.AppRepo;
 import com.kamilradzyminski.projekt.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AppServiceImpl implements AppService {
 
     @Autowired
@@ -22,7 +24,7 @@ public class AppServiceImpl implements AppService {
 
     @Override
     public App save(Application application) {
-        App app = new App(application.getName(), application.getDomain());
+        App app = new App(application.getAppName(), application.getDomainName());
 
         return appRepo.save(app);
     }

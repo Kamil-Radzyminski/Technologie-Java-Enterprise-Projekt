@@ -10,18 +10,18 @@ import lombok.Setter;
 public class Application {
 
     private Long id;
-    private String name;
-    private String domain;
+    private String appName;
+    private String domainName;
 
 
-    public Application(Long id, String name, String domain) {
+    public Application(Long id, String appName, String domainName) {
         this.id = id;
-        this.name = name;
-        this.domain = domain;
+        this.appName = appName;
+        this.domainName = domainName;
     }
 
-    public Application(String name, String domain) {
-        this.name = name;
-        this.domain = domain;
+    public Application(String appName, String domainName) {
+        this.appName = appName;
+        this.domainName = domainName;
     }
 }

@@ -45,8 +45,8 @@ public class App {
             joinColumns = @JoinColumn(
                     name = "app_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "persons_id", referencedColumnName = "id"))
-    Set<App> personList = new HashSet<>();
+                    name = "person_id", referencedColumnName = "id"))
+    Set<Person> personList = new HashSet<>();
 
 
     public App(String appName, String domainName) {

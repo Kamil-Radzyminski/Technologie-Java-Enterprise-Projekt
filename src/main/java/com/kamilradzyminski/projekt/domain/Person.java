@@ -18,7 +18,7 @@ import java.util.*;
 @ToString
 @Component
 @Entity
-@Table(name = "person", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "persons", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Person {
     @Id
     @CsvBindByName(column = "id")

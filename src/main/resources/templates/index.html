@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,21 +12,14 @@
     <a class="navbar-brand text-light" th:href="@{/}">Home</a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-light" th:href="@{/persons}">Person list</a>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/application}">Applications</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" th:href="@{/persons/search}">Search</a>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/myacc}">My account</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link text-light dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">Statistics</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" th:href="@{/persons/statistics}">Credit Card Type</a>
-                    <a class="dropdown-item" th:href="@{/persons/genderStatistics}">Gender</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" th:href="@{/settings}">Settings</a>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/logout}">Logout</a>
             </li>
         </ul>
     </div>
@@ -43,7 +36,7 @@
 
 <footer class="footer">
     <div class="container-fluid bg-dark text-center p-2">
-        <span class="text-light">Kamil Radzymiński 2020</span>
+        <span class="text-light">Kamil Radzymiński 2021</span>
     </div>
 </footer>
 </body>
