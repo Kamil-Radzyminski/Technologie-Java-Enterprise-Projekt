@@ -13,16 +13,16 @@ import javax.validation.constraints.Pattern;
 @Setter
 @NoArgsConstructor
 public class PersonRegister {
+    @Pattern(regexp = "^[A-Z]+[A-z]*", message = "First name is invalid")
     private String firstName;
+    @Pattern(regexp = "^[A-Z]+[A-z]*", message = "Last name is invalid")
     private String lastName;
     @ValidEmail
     @Pattern(regexp = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", message = "Email is invalid")
     private String email;
+    @Pattern(regexp = "^[A-Z]+[A-z]*", message = "Country name is invalid")
     private String country;
     private String username;
-//    @NotNull
-//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$", message = "haslo musi zawierac conajmniej 8 znaków" +
-//            "w tym jedną lub więcej: małą literę, dużą literę oraz cyfrę")
     @ValidPassword
     private String password;
 
