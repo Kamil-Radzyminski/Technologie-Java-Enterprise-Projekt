@@ -43,7 +43,7 @@ public class ProjektApplication {
 		String line;
 		BufferedReader br;
 		Long counter= 1L;
-        personService.saveAdmin(new PersonRegister("admin","admin","adminnn@admin.com","Polska","Haslo123","admin"));
+        personService.saveAdmin(new PersonRegister("Admin","Admin","adminnn@admin.com","Polska","Haslo123","admin"));
 		try {
 			br = new BufferedReader(new FileReader("src/main/resources/Persons.csv"));
 			while ((line = br.readLine()) != null) {

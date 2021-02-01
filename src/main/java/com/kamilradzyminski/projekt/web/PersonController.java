@@ -128,7 +128,7 @@ public class PersonController {
 
     @PostMapping("/allacc/tocsv")
     public String accountsToCsv() throws IOException {
-        String path = System.getProperty("person.home") + File.separator + "Downloads" + File.separator + "persons.csv";
+        String path = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "persons.csv";
         FileWriter f = new FileWriter(path);
         for (Person person : persons) {
             f.write("\n" + person.toString());

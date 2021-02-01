@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My account</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="d-flex flex-column sticky-footer-wrapper min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-light" th:href="@{/}">Home</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/application}">Applications</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/myacc}">My account</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-light" th:href="@{/myacc}">Account management panel</a>
+    <div class="collapse navbar-collapse" id="subnavbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/accdelete}">Delete my account</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/accupdate}">Edit my account</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/allacc}">Show all account</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-light" th:href="@{/accfromapp}">Find app user</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main" class="flex-fill container mt-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="popup">Usunieto</div>
+                </div>
+                <h1>Znajdz Uzytkownikow Aplikacji</h1>
+
+                <form th:action="@{/accfromapp}" method="post" th:object="${application}">
+                    <div class="form-group">
+                        <label class="control-label" for="id">id</label>
+                        <input name="id" th:value="${application.id}"/>
+                        <input type="submit" value="Find" class="btn btn-secondary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container-fluid bg-dark text-center p-2">
+        <span class="text-light">Kamil Radzymiński 2021</span>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

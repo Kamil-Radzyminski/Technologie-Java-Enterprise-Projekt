@@ -44,7 +44,7 @@ public class PersonServiceImpl implements PersonService {
                 personRegister.getCountry(),
                 passwordEncoder.encode(personRegister.getPassword()),
                 personRegister.getUsername(),
-                Arrays.asList(new Role("USER")));
+                Arrays.asList(new Role("ROLE_USER")));
         return personRepo.save(person);
     }
 
@@ -56,7 +56,7 @@ public class PersonServiceImpl implements PersonService {
                 personRegister.getCountry(),
                 passwordEncoder.encode(personRegister.getPassword()),
                 personRegister.getUsername(),
-                Arrays.asList(new Role("ADMIN")));
+                Arrays.asList(new Role("ROLE_ADMIN")));
         return personRepo.save(person);
     }
 
