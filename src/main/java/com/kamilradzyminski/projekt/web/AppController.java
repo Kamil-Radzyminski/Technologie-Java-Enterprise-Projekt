@@ -34,14 +34,14 @@ public class AppController {
     public String application(Model model, Principal principal) {
         Person personToFind = personRepo.findByEmail(principal.getName());
         apps = appRepo.findAllByPersonListContains(personToFind);
-        model.addAttribute("app", apps);
+        model.addAttribute("apps", apps);
         return "Applications";
     }
 
     @GetMapping("/application/all")
     public String allApplication(@Valid Model model) {
         apps = appRepo.findAllByOrderByIdAsc();
-        model.addAttribute("app", apps);
+        model.addAttribute("apps", apps);
         return "AllApplications";
     }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 
     <meta charset="utf-8" />
@@ -25,7 +26,9 @@
 <div class = "container">
     <div class = "row">
         <div class="col-md-6 col-md-offset-3">
-
+            <div sec:authorize="isAuthenticated()">
+                JD
+            </div>
             <h1> Logowanie </h1>
             <form th:action="@{/login}" method="post">
 

@@ -1,5 +1,6 @@
 package com.kamilradzyminski.projekt.web;
 
+import com.kamilradzyminski.projekt.domain.App;
 import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.dto.*;
 import com.kamilradzyminski.projekt.exceptions.NotFoundException;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,6 +43,10 @@ public class PersonController {
 
     @RequestMapping(value = "/accdelete", method = RequestMethod.POST)
     public String DeleteAccount(Principal principal) {
+        Person person = personRepo.findByEmail(principal.getName());
+        for (App app : person.getAppList()) {
+            app.getPersonList().remove(person);
+        }
         personRepo.deleteById(personRepo.findByEmail(principal.getName()).getId());
         return "login";
     }
@@ -50,12 +56,16 @@ public class PersonController {
         Person personToUpdate = personRepo.findById(personRepo.findByEmail(principal.getName())
                 .getId()).orElseThrow(() -> new NotFoundException(personRepo.findByEmail(principal.getName())
                 .getId()));
+        personToUpdate.setPassword("");
         model.addAttribute("user", personToUpdate);
         return "AccEdit";
     }
 
     @RequestMapping(value = "/accupdate", method = RequestMethod.POST)
-    public String updateUser(@ModelAttribute("user") @Valid PersonRegister NewPerson, Principal principal) {
+    public String updateUser(@ModelAttribute("user") @Valid PersonRegister NewPerson, BindingResult bindingResult, Principal principal) {
+        if (bindingResult.hasErrors()) {
+            return "AccEdit";
+        }
         personRepo.findById(personRepo.findByEmail(principal.getName()).getId())
                 .map(person -> {
                     person.setFirstName(NewPerson.getFirstName());
@@ -98,6 +108,9 @@ public class PersonController {
     @GetMapping("/accdelete/{id}")
     public String accountDeleteId(@PathVariable Long id) {
         Person personToDelete = personRepo.findById(id).orElseThrow(() -> new NotFoundException(id));
+        for (App app : personToDelete.getAppList()) {
+            app.getPersonList().remove(personToDelete);
+        }
         personRepo.deleteById(personToDelete.getId());
         return "redirect:/allacc";
     }
@@ -106,6 +119,7 @@ public class PersonController {
     public String accountEditId(@PathVariable Long id, Model model) {
         Person personToFind = personRepo.findById(id).orElseThrow(() -> new NotFoundException(id));
         model.addAttribute("person", personToFind);
+        personToFind.setPassword("");
         return "AccIdEdit";
     }
 
