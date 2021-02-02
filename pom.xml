@@ -14,8 +14,8 @@
     <name>projekt</name>
     <description>Osoby i ich karty kredytowe</description>
     <properties>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>13.0.1</maven.compiler.source>
+        <maven.compiler.target>13.0.1</maven.compiler.target>
     </properties>
 
     <dependencies>
