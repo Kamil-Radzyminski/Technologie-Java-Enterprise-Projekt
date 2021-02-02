@@ -1,19 +1,15 @@
 package com.kamilradzyminski.projekt.web;
 
-import com.kamilradzyminski.projekt.domain.Person;
 import com.kamilradzyminski.projekt.dto.PersonRegister;
-import com.kamilradzyminski.projekt.repo.PersonRepo;
 import com.kamilradzyminski.projekt.service.impl.PersonServiceImpl;
-import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.validation.*;
 import javax.validation.Valid;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/registration")

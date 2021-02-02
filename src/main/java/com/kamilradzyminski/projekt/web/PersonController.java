@@ -2,7 +2,7 @@ package com.kamilradzyminski.projekt.web;
 
 import com.kamilradzyminski.projekt.domain.App;
 import com.kamilradzyminski.projekt.domain.Person;
-import com.kamilradzyminski.projekt.dto.*;
+import com.kamilradzyminski.projekt.dto.PersonRegister;
 import com.kamilradzyminski.projekt.exceptions.NotFoundException;
 import com.kamilradzyminski.projekt.repo.AppRepo;
 import com.kamilradzyminski.projekt.repo.PersonRepo;

@@ -2,7 +2,6 @@ package com.kamilradzyminski.projekt.dto;
 
 import com.kamilradzyminski.projekt.validation.ValidEmail;
 import com.kamilradzyminski.projekt.validation.ValidPassword;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

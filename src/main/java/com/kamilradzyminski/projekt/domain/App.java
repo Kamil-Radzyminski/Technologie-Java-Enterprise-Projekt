@@ -7,8 +7,6 @@ import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,15 +20,12 @@ import java.util.Set;
 @Table(name = "app")
 public class App {
     @Id
-    @CsvBindByName(column = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CsvBindByName(column = "app_name")
     @NotNull
     private String appName;
 
-    @CsvBindByName(column = "domain_name")
     @NotNull
     private String domainName;
 
@@ -43,7 +38,6 @@ public class App {
             inverseJoinColumns = @JoinColumn(
                     name = "person_id", referencedColumnName = "id"))
     Set<Person> personList = new HashSet<>();
-
 
     public App(String appName, String domainName) {
         this.appName = appName;

@@ -13,15 +13,4 @@ public class Application {
     private String appName;
     private String domainName;
 
-
-    public Application(Long id, String appName, String domainName) {
-        this.id = id;
-        this.appName = appName;
-        this.domainName = domainName;
-    }
-
-    public Application(String appName, String domainName) {
-        this.appName = appName;
-        this.domainName = domainName;
-    }
 }
