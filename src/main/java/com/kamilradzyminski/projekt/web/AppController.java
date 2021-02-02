@@ -146,7 +146,7 @@ public class AppController {
 
     @PostMapping("/apps/tocsv")
     public String appsToCsv() throws IOException {
-        String path = System.getProperty("person.home") + File.separator + "Downloads" + File.separator + "apps.csv";
+        String path = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "apps.csv";
         FileWriter f = new FileWriter(path);
         for (App app : apps) {
             f.write("\n" + app.toString());

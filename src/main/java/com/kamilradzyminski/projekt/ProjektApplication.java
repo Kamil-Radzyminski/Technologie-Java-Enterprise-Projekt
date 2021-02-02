@@ -46,6 +46,7 @@ public class ProjektApplication {
         personService.saveAdmin(new PersonRegister("Admin","Admin","adminnn@admin.com","Polska","Haslo123","admin"));
 		try {
 			br = new BufferedReader(new FileReader("src/main/resources/Persons.csv"));
+			br.readLine();
 			while ((line = br.readLine()) != null) {
 				String[] split = line.split(",", 7);
                 personService.save(new PersonRegister(split[1], split[2], split[3], split[4], split[5], split[6]));
@@ -55,6 +56,7 @@ public class ProjektApplication {
 		}
 		try {
 			br = new BufferedReader(new FileReader("src/main/resources/Domains.csv"));
+			br.readLine();
 			while ((line = br.readLine()) != null) {
 				String[] split = line.split(",", 4);
 				App app = new App(split[1], split[2]);

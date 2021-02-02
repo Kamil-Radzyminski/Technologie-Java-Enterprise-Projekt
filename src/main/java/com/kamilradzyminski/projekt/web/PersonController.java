@@ -123,9 +123,9 @@ public class PersonController {
         return "AccIdEdit";
     }
 
-    @PostMapping("/accedit/id")
-    public String updateUserId(@ModelAttribute("person") @Valid PersonRegister NewPerson, Principal principal) {
-        personRepo.findById(personRepo.findByEmail(principal.getName()).getId())
+    @PostMapping("/accedit/{id}")
+    public String updateUserId(@PathVariable Long id, @ModelAttribute("person") @Valid PersonRegister NewPerson) {
+        personRepo.findById(id)
                 .map(person -> {
                     person.setFirstName(NewPerson.getFirstName());
                     person.setLastName(NewPerson.getLastName());

@@ -54,7 +54,7 @@
 
                 <h1>Edit account</h1>
 
-                <form th:action="@{/accedit/id}" method="post" th:object="${person}">
+                <form th:action="@{/accedit/{id}(id=${person.id})}" method="post" th:object="${person}">
                     <div class="form-group">
                         <label class="control-label" for="firstName"> Imie</label>
                         <input type="text" id="id" class="form-control" th:field="${person.id}" readonly/>
