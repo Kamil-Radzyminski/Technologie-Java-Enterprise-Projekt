@@ -48,29 +48,38 @@
 </nav>
 
 <main role="main" class="flex-fill container mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
 
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>App name</th>
-            <th>Domain name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        <th:block  th:each="app : ${apps}">
-            <tr>
-                <td th:text="${app.id}"></td>
-                <td th:text="${app.appName}"></td>
-                <td th:text="${app.domainName}"></td>
-                <td>
-                    <a th:href="@{/application/update/{id}(id=${app.id})}" class="edit">Edit</a>
-                </td>
-                <td>
-                    <a th:href="@{/application/delete/{id}(id=${app.id})}" class="edit">Delete</a>
-                </td>
-            </tr>
-        </th:block>
-    </table>
+                <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">Added!</div>
+                </div>
+
+                <h1>Adding app</h1>
+
+                <form th:action="@{/application/add}" method="post" th:object="${app}">
+                    <div class="form-group">
+                        <label class="control-label" for="name"> App name</label>
+                        <input id="name" class="form-control" th:field="*{appName}"
+                               required autofocus="autofocus" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="domain"> Domain name</label> <input
+                            id="domain" class="form-control" th:field="*{domainName}"
+                            required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Add</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
 <footer class="footer">
     <div class="container-fluid bg-dark text-center p-2">

@@ -45,6 +45,12 @@ public class AppController {
         return "AllApplications";
     }
 
+    @GetMapping("/application/add")
+    public String AddingApplication(@Valid Model model) {
+        model.addAttribute("app", new App());
+        return "ApplicationForm";
+    }
+
     @ModelAttribute("application")
     public Application application() {
         return new Application();
