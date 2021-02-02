@@ -1,7 +1,9 @@
 package com.kamilradzyminski.projekt.web;
 
 import com.kamilradzyminski.projekt.dto.PersonRegister;
+import com.kamilradzyminski.projekt.service.SendEmailService;
 import com.kamilradzyminski.projekt.service.impl.PersonServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/registration")
 public class PersonRegisterController {
+
+    @Autowired
+    SendEmailService sendEmailService;
 
     private PersonServiceImpl personService;
 
@@ -39,6 +44,7 @@ public class PersonRegisterController {
         }
         personService.save(personRegister);
 //email sender
+        sendEmailService.sendEmail(personRegister.getEmail(), ("Welcome in my app " + personRegister.getUsername() + "!"), "Registration");
         return "redirect:/registration?success";
     }
 }
