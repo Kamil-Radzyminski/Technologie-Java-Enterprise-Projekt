@@ -43,8 +43,7 @@ public class PersonRegisterController {
             return "registration";
         }
         personService.save(personRegister);
-//email sender
-        sendEmailService.sendEmail(personRegister.getEmail(), ("Welcome in my app " + personRegister.getUsername() + "!"), "Registration");
+        sendEmailService.sendEmail(personRegister.getEmail(), ("Welcome in my app " + personRegister.getUsername() + ", you are registered now!"), "Registration");
         return "redirect:/registration?success";
     }
 }
