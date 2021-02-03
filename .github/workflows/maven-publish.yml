@@ -4,13 +4,13 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
-
+  push:
+    branches: [main]
+    
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,8 +23,6 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Compile with maven
+      run: mvn compile
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
