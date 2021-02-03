@@ -17,7 +17,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @SpringBootApplication
-
 public class ProjektApplication {
     @Autowired
     PersonServiceImpl personService;
