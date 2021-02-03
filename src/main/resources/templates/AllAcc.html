@@ -70,10 +70,10 @@
                 <td th:text="${person.country}"></td>
                 <td th:text="${person.username}"></td>
                 <td>
-                    <a th:href="@{/accedit/{id}(id=${person.id})}" class="edit">Edit</a>
+                    <a th:href="@{/accedit/{id}(id=${person.id})}" class="edit" >Edit</a>
                 </td>
                 <td>
-                    <a th:href="@{/accdelete/{id}(id=${person.id})}" class="edit">Delete</a>
+                    <a th:href="@{/accdelete/{id}(id=${person.id})}"  class="edit" onclick="return confirm_delete()">Delete</a>
                 </td>
             </tr>
         </th:block>
@@ -110,5 +110,9 @@
 </body>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm('Are you sure?');
+    }
+</script>
 </html>

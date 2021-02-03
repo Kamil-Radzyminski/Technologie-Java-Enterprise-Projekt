@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label class="control-label" for="id">id</label>
                         <input name="id"  th:value="${application.id}"/>
-                        <input type="submit" value="Delete" class="btn btn-danger">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm_delete()">
                     </div>
                 </form>
             </div>
@@ -78,5 +78,9 @@
 </body>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm('Are you sure?');
+    }
+</script>
 </html>

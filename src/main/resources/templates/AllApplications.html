@@ -68,7 +68,7 @@
                     <a th:href="@{/application/update/{id}(id=${app.id})}" class="edit">Edit</a>
                 </td>
                 <td>
-                    <a th:href="@{/application/delete/{id}(id=${app.id})}" class="edit">Delete</a>
+                    <a th:href="@{/application/delete/{id}(id=${app.id})}" class="edit" onclick="return confirm_delete()">Delete</a>
                 </td>
                 <td>
                     <a th:href="@{/application/{id}/users(id=${app.id})}" class="edit">Users</a>
@@ -106,5 +106,9 @@
 </body>
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm('Are you sure?');
+    }
+</script>
 </html>
